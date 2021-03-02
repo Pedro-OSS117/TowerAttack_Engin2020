@@ -351,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065521303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0240316, y: -0.9480214, z: -2.6084065}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -370,36 +370,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapData:
-    _width: 15
-    _height: 10
+    _width: 17
+    _height: 14
     _grid:
-    - _state: 2
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
-    - _state: 2
-      _alignment: 2
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 1
-    - _state: 2
+    - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 0
-    - _state: 2
-      _alignment: 2
-    - _state: 2
       _alignment: 0
     - _state: 0
-      _alignment: 2
-    - _state: 0
-      _alignment: 1
-    - _state: 2
-      _alignment: 0
-    - _state: 1
       _alignment: 0
     - _state: 0
       _alignment: 0
@@ -407,270 +385,468 @@ MonoBehaviour:
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 2
-    - _state: 1
-      _alignment: 2
-    - _state: 2
-      _alignment: 1
-    - _state: 2
-      _alignment: 1
-    - _state: 0
-      _alignment: 2
-    - _state: 2
-      _alignment: 1
-    - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 2
-    - _state: 1
-      _alignment: 2
-    - _state: 0
-      _alignment: 1
-    - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 2
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 2
-    - _state: 1
-      _alignment: 1
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 0
-      _alignment: 2
-    - _state: 0
-      _alignment: 1
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 2
-      _alignment: 2
-    - _state: 0
-      _alignment: 2
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
-    - _state: 2
-      _alignment: 2
-    - _state: 0
-      _alignment: 1
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 2
-    - _state: 2
-      _alignment: 1
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 1
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 2
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 2
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 0
-      _alignment: 1
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 1
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 1
-    - _state: 0
-      _alignment: 1
-    - _state: 2
-      _alignment: 2
-    - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 1
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 1
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 2
-      _alignment: 1
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 2
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 0
-    - _state: 2
-      _alignment: 1
-    - _state: 2
-      _alignment: 1
-    - _state: 0
-      _alignment: 1
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 2
-    - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 1
-    - _state: 0
-      _alignment: 2
-    - _state: 1
-      _alignment: 1
+      _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 1
     - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 2
-    - _state: 2
-      _alignment: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 1
       _alignment: 0
     - _state: 0
-      _alignment: 1
-    - _state: 1
-      _alignment: 2
+      _alignment: 0
     - _state: 0
-      _alignment: 1
+      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 2
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 2
     - _state: 1
       _alignment: 0
-    - _state: 2
+    - _state: 1
       _alignment: 0
-    - _state: 2
-      _alignment: 2
+    - _state: 1
+      _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
+    - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 2
-    - _state: 2
+    - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 2
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
   displayDebugView: 1

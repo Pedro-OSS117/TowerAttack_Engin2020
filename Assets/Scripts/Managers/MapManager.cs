@@ -8,6 +8,8 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private MapData _mapData;
 
+    public MapData MapData { get { return _mapData; } }
+
     public bool displayDebugView = true;
 
     [ContextMenu("GenerateMap")]
@@ -15,7 +17,7 @@ public class MapManager : MonoBehaviour
     {
         _mapData.ResetMap();
 
-        _mapData.GenSquareRandom();
+        //_mapData.GenSquareRandom();
     }
 
     private void OnDrawGizmos()

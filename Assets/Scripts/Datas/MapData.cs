@@ -15,9 +15,17 @@ public class MapData
     [SerializeField]
     private SquareData[] _grid;
 
-    public int Width { get { return _width; } }
+    public int Width
+    {
+        get { return _width; }
+        set { _width = value; }
+    }
 
-    public int Height { get { return _height; } }
+    public int Height
+    {
+        get { return _height; }
+        set { _height = value; }
+    }
 
     public SquareData[] Grid { get { return _grid; } }
 
@@ -54,5 +62,10 @@ public class MapData
             Debug.Log($"Error index not exist at {x}, {z}");
             return default(SquareData);
         }
+    }
+
+    public bool IsInGrid(Vector3 position)
+    {
+        return position.x >= 0 && position.x <= _width && position.z >= 0 && position.z <= _height;
     }
 }
