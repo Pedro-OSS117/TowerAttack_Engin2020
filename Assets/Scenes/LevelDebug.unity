@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &400082438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400082439}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400082439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400082438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,8 +319,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.6026363, y: 0.0040660203, z: -0.0030734988, w: -0.79799974}
+  m_LocalPosition: {x: 10.050474, y: 13.700002, z: 0.97512484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -309,7 +339,7 @@ GameObject:
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -340,10 +370,307 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapData:
-    _width: 23
-    _height: 37
+    _width: 15
+    _height: 10
     _grid:
+    - _state: 2
+      _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 2
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 1
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 0
+    - _state: 2
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 0
+      _alignment: 1
+    - _state: 2
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 2
+    - _state: 1
+      _alignment: 2
+    - _state: 2
+      _alignment: 1
+    - _state: 2
+      _alignment: 1
+    - _state: 0
+      _alignment: 2
+    - _state: 2
+      _alignment: 1
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 2
+    - _state: 1
+      _alignment: 2
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 2
+    - _state: 1
+      _alignment: 1
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 2
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 1
       _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 2
+      _alignment: 2
+    - _state: 0
+      _alignment: 2
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 2
+      _alignment: 2
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 2
+      _alignment: 1
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 1
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 2
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 1
+    - _state: 2
+      _alignment: 2
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 1
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 2
+      _alignment: 1
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 1
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 0
+    - _state: 2
+      _alignment: 1
+    - _state: 2
+      _alignment: 1
+    - _state: 0
+      _alignment: 1
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 1
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 2
+    - _state: 2
+      _alignment: 2
+    - _state: 0
+      _alignment: 0
+    - _state: 1
+      _alignment: 0
+    - _state: 0
+      _alignment: 1
+    - _state: 1
+      _alignment: 2
+    - _state: 0
+      _alignment: 1
+    - _state: 0
+      _alignment: 0
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 0
+      _alignment: 2
+    - _state: 1
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 2
+    - _state: 0
+      _alignment: 0
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 2
+    - _state: 2
+      _alignment: 0
+    - _state: 2
+      _alignment: 2
+  displayDebugView: 1
