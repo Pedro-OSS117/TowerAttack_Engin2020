@@ -16,6 +16,7 @@ public class MapManager : MonoBehaviour
 
     // Debug View
     public GameObject _surfaceView;
+    public GameObject _wallView;
 
     [ContextMenu("GenerateMap")]
     public void GenerateMap()

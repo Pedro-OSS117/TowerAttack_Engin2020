@@ -28,6 +28,41 @@ public class MapEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        DisplayMapProperties();
+
+        DisplayMapViewProperties();
+
+        DisplayEditMap();
+        
+        GUILayout.Label("====== UPDATE MAP VIEW ======", EditorStyles.boldLabel);
+
+        if(GUILayout.Button("Update View"))
+        {
+            // Detruire tous les enfants de MapManager
+            DetroyAllChilds(_targetMapManager.gameObject);
+
+            // Instancier et setter la surface             
+            GameObject newSurface = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._surfaceView, _targetMapManager.transform);
+
+            // Instancier et setter les squares
+
+            // Generer la surface
+        }
+    }
+
+    private void DetroyAllChilds(GameObject parent)
+    {
+        if(parent != null)
+        {
+            for(int i = parent.transform.childCount; i > 0; i--)
+            {
+                DestroyImmediate(parent.transform.GetChild(0).gameObject);
+            }
+        }
+    }
+
+    private void DisplayMapProperties()
+    {
         GUILayout.Label("====== MAP PROPERTIES ======", EditorStyles.boldLabel);
 
         EditorGUI.BeginChangeCheck();
@@ -59,19 +94,31 @@ public class MapEditor : Editor
         {
             SceneView.RepaintAll();
         }
+    }
 
-        //GUILayout.Label("====== MAP VIEW ======", EditorStyles.boldLabel);
-         //EditorGUILayout.ObjectField("coucou", _targetMapManager._surfaceView, typeof(GameObject), true);
+    private void DisplayMapViewProperties()
+    {
+        GUILayout.Label("====== MAP VIEW ======", EditorStyles.boldLabel);
+        EditorGUI.BeginChangeCheck();
+        _targetMapManager._surfaceView = (GameObject)EditorGUILayout.ObjectField("Surface Debug", _targetMapManager._surfaceView, typeof(GameObject), false);
+        _targetMapManager._wallView = (GameObject)EditorGUILayout.ObjectField("Wall Debug", _targetMapManager._wallView, typeof(GameObject), false);
+        if (EditorGUI.EndChangeCheck())
+        {
+            SetObjectDirty(_targetMapManager);
+        }
+    }
 
+    private void DisplayEditMap()
+    {
         GUILayout.Label("====== MAP EDITOR ======", EditorStyles.boldLabel);
 
-        if (GUILayout.Button("Generate Map"))
+        if (GUILayout.Button("Reset Map"))
         {
             _targetMapManager.GenerateMap();
             SetObjectDirty(_targetMapManager);
             SceneView.RepaintAll();
         }
-        
+
         GUILayout.BeginHorizontal();
         GUILayout.Label("Enable Edit Mode : ");
         _isInSquareStateEditMode = EditorGUILayout.Toggle(_isInSquareStateEditMode);
@@ -86,6 +133,7 @@ public class MapEditor : Editor
             GUILayout.EndHorizontal();
         }
     }
+
 
     private void OnSceneGUI()
     {
