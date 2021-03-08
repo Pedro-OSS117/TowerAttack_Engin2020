@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapData:
-    _width: 20
+    _width: 12
     _height: 14
     _grid:
     - _state: 0
@@ -409,94 +409,6 @@ MonoBehaviour:
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
@@ -504,40 +416,22 @@ MonoBehaviour:
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 2
       _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
@@ -545,155 +439,69 @@ MonoBehaviour:
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
       _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
       _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
       _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
       _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
       _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
       _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
@@ -710,34 +518,20 @@ MonoBehaviour:
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 1
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
@@ -751,16 +545,10 @@ MonoBehaviour:
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
@@ -768,17 +556,11 @@ MonoBehaviour:
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 2
-      _alignment: 0
-    - _state: 2
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
@@ -793,14 +575,10 @@ MonoBehaviour:
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
       _alignment: 0
-    - _state: 1
-      _alignment: 0
     - _state: 0
       _alignment: 0
     - _state: 0
@@ -808,8 +586,6 @@ MonoBehaviour:
     - _state: 0
       _alignment: 0
     - _state: 0
-      _alignment: 0
-    - _state: 2
       _alignment: 0
     - _state: 0
       _alignment: 0

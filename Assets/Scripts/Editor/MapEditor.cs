@@ -10,14 +10,20 @@ public class MapEditor : Editor
     private MapManager _targetMapManager;
 
     private int _squareStateMode;
-
     private bool _isInSquareStateEditMode = false;
 
-    private Vector3 currentEditedPosition = Vector3.zero;
+    private bool _canEditSquare = true;
+    private Vector3 _currentEditedPosition = Vector3.zero;
 
     private void OnEnable()
     {
         _targetMapManager = (MapManager)target;
+        LoadPrefsEditor();
+    }
+
+    private void OnDisable()
+    {
+        SavePrefsEditor();
     }
 
     public override void OnInspectorGUI()
@@ -39,6 +45,7 @@ public class MapEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             _targetMapManager.GenerateMap();
+            SetObjectDirty(_targetMapManager);
             SceneView.RepaintAll();
         }
 
@@ -53,12 +60,15 @@ public class MapEditor : Editor
             SceneView.RepaintAll();
         }
 
+        //GUILayout.Label("====== MAP VIEW ======", EditorStyles.boldLabel);
+         //EditorGUILayout.ObjectField("coucou", _targetMapManager._surfaceView, typeof(GameObject), true);
+
         GUILayout.Label("====== MAP EDITOR ======", EditorStyles.boldLabel);
 
         if (GUILayout.Button("Generate Map"))
         {
             _targetMapManager.GenerateMap();
-
+            SetObjectDirty(_targetMapManager);
             SceneView.RepaintAll();
         }
         
@@ -79,18 +89,44 @@ public class MapEditor : Editor
 
     private void OnSceneGUI()
     {
-        if(_isInSquareStateEditMode)
+        // Validation des inputs
+        // Valide qu'on peut bien editer les squares
+        CanEditSquare();
+
+        if (_isInSquareStateEditMode)
         {
+            // Lock des outils d'edition de la scene
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
             Tools.current = Tool.None;
 
+            // Valider qu'on est bien à l'interieur de la grille
             if (DisplayEditSquareStateMode())
             {
-                EditSquareStateMode(currentEditedPosition);
+                if(_canEditSquare)
+                {
+                    EditSquareStateMode(_currentEditedPosition);
+                }
             }
         }
 
         SceneView.RepaintAll();
+    }
+
+    private void CanEditSquare()
+    {
+        Event current = Event.current;
+        if(current.keyCode == KeyCode.LeftAlt)
+        {
+            switch (current.type)
+            {
+                case EventType.KeyDown:
+                    _canEditSquare = false;
+                    break;
+                case EventType.KeyUp:
+                    _canEditSquare = true;
+                    break;
+            }
+        }
     }
 
     private bool DisplayEditSquareStateMode()
@@ -115,7 +151,7 @@ public class MapEditor : Editor
 
             if (_targetMapManager.MapData.IsInGrid(position))
             {
-                currentEditedPosition = position;
+                _currentEditedPosition = position;
                 return true;
             }
         }
@@ -127,6 +163,8 @@ public class MapEditor : Editor
         SquareState currentSquareState = (SquareState)_squareStateMode;
         Handles.color = SquareData.GetColorFromState(currentSquareState);
         Handles.DrawWireCube(position, Vector3.one);
+        Handles.color = Color.cyan;
+        Handles.DrawWireCube(position, Vector3.one/2);
 
         if ((Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag)
             && Event.current.button == 0)
@@ -140,7 +178,8 @@ public class MapEditor : Editor
         }
     }
 
-    private void SetObjectDirty(UnityEngine.Object objectDirty)
+    #region SAVE / LOAD / DIRTY
+    public static void SetObjectDirty(UnityEngine.Object objectDirty)
     {
         if (!Application.isPlaying)
         {
@@ -148,4 +187,17 @@ public class MapEditor : Editor
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
     }
+
+    private void LoadPrefsEditor()
+    {
+        _isInSquareStateEditMode = EditorPrefs.GetBool(nameof(_isInSquareStateEditMode));
+        _squareStateMode = EditorPrefs.GetInt(nameof(_squareStateMode));
+    }
+
+    private void SavePrefsEditor()
+    {
+        EditorPrefs.SetBool(nameof(_isInSquareStateEditMode), _isInSquareStateEditMode);
+        EditorPrefs.SetInt(nameof(_squareStateMode), _squareStateMode);
+    }
+    #endregion  SAVE / LOAD / DIRTY
 }

@@ -45,7 +45,7 @@ public struct SquareData
             case SquareState.Water:
                 return Color.cyan;
             default:
-                return Color.green;
+                return Color.white;
         }
     }
 

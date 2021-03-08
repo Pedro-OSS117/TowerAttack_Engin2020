@@ -5,12 +5,17 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class MapManager : MonoBehaviour
 {
+    // Data
     [SerializeField]
     private MapData _mapData;
 
     public MapData MapData { get { return _mapData; } }
 
+    // Debug
     public bool displayDebugView = true;
+
+    // Debug View
+    public GameObject _surfaceView;
 
     [ContextMenu("GenerateMap")]
     public void GenerateMap()
