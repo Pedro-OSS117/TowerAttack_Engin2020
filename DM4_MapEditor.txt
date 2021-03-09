@@ -1,0 +1,83 @@
+================== Règles =====================
+. Doit être sur vos Unity GitHub avant 10h Mardi 16 Mars sinon 0.
+. -1 points à chaque erreur de nomenclature.
+. -5 si pas de commentaires et -2 si les commentaires ne sont pas exaustifs
+. 0 sur l'exo si le programme ne compile pas.
+. note exo divisée par 2 si l'exo plante à l'éxécution.
+
+================= MapEditor ==================
+
+4 _ _ _ _ _ _ _ _ 
+3|_|_|_|_|_|_|_|_|
+2|_|_|_|_|_|_|_|_|
+1|_|_|_|_|_|_|_|_|
+0|_|_|_|_|_|_|_|_|
+ 0 1 2 3 4 5 6 7 8
+
+================= I - Edges Datas
+
+1 - Creer un Array de bool representant les edges horizontales. 
+//true = presente, false = abstente.
+
+2 - Initiliser correctement le tableau en fonction de la width et de la height
+
+3 - Ajouter l'affichage des edges horizontales en Gizmo
+
+4 - EdgeSquare verticales
+Faire pour les edges Verticales la même chose que pour les egdges horizontales
+
+================= II - Edges Editor Display
+
+1 - Creer un Toggle  dans l'inspector qui permettra d'activer/desactiver l'edition des edges.
+- Ajouter une variable membre de type bool pour cela.
+
+2 - Faire en sorte que si ce toggle est activé, le toggle pour l'edition des squares est desactivé et inversement.
+
+3 - Ajouter un Label au dessus du Toggle des squares avec le texte "Edit Square".
+- Ajouter un Label au dessus du Toggle des edges avec le texte "Edit Edge".
+
+4 - Ajouter un Toggle qui permettra de definir si on est en train d'ajouter/de supprimer une edge
+- Ajouter une variable membre bool pour cela.
+- Ce Toggle doit être accessible dans l'inspector uniquement si le toggle d'edition des edges est actif.
+
+5 - Ajouter une méthode qui affiche un gizmo en fonction de la position de la souris
+et qui montre quelle edge on va editer.
+- Cette methode est appelée dans OnSceneGui et si le Toggle d'edition des edges est activé.
+(Inspirez vous de comment est affiché le gizmo du square)
+
+================= III - Edges Editor - Apply Modification
+
+1 - Creer une methode qui permet d'editer les datas de la edge correspondant à la position de la souris.
+- Appeler cette methode dans OnSceneGui si le toggle d'edition des edges est activé.
+
+2 - Faire en sorte que la vue se mette bien à jour en fonction des datas
+- Creer la prefab des edges
+- Integrer la prefab au système de generation de map
+
+3 - Faire en sorte que si on ajoute une edge et qu'il y a des murs sur ses côtés adjacents,
+les murs sont supprimés.
+
+4 - Faire en sorte que si on ajoute un mur et qu'il y a des edges sur ses côtés adjacents, les edges sont supprimées.
+
+
+================= IV Square Brush
+
+Dans cet exercice on doit créer un système de brush pour l'edition des squares dans MapEditor
+
+1 - Creer une enum  qui representera l'etat de la brush :
+L'enumeration contient les valeurs : One  et Line
+One : represente le fait d'editer un seul square (l'état de base déjà codé)
+Line : represente l'edition d'une ligne de deux squares
+
+2 - Afficher l'enumeration dans l'editeur dans la partie edition des squares
+
+3 - Faire en sorte que si on edit les squares et que si l'enum est setté sur Line
+On edit deux squares. Celui à la position de la souris et celui à x + 1
+
+4 - Faire la même chose avec une forme de cube (2x2) (Ajouter une valeur d'enum a chaque fois)
+- Faite la meme chose avec une forme de croix ou de L ou de T ou la forme que vous souhaitez.
+
+5 - Permettre de tourner la brush de 90 degrés avec la touche R
+
+
+================= V - Bonus => Faire en sorte que pour toutes les nouvelles variables membres créées, l'état de l'editor soit save/load
