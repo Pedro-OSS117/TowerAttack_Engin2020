@@ -38,15 +38,40 @@ public class MapEditor : Editor
 
         if(GUILayout.Button("Update View"))
         {
-            // Detruire tous les enfants de MapManager
+            // ========= Detruire tous les enfants de MapManager
             DetroyAllChilds(_targetMapManager.gameObject);
 
-            // Instancier et setter la surface             
+            // ========= Instancier et setter la surface             
             GameObject newSurface = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._surfaceView, _targetMapManager.transform);
 
-            // Instancier et setter les squares
+            // Scale de la surface pour avoir une correspondance
+            newSurface.transform.localScale = new Vector3(_targetMapManager.MapData.Width, 1, _targetMapManager.MapData.Height);
 
-            // Generer la surface
+            // Set de la position de la surface
+            newSurface.transform.position = new Vector3(_targetMapManager.MapData.Width / 2.0f, 0, _targetMapManager.MapData.Height / 2.0f);
+
+            // ========= Instancier et setter les squares
+
+            // Creation d'un container en dessous de map manager
+            GameObject squaresContainer = new GameObject("SquaresContainer");
+            squaresContainer.transform.SetParent(_targetMapManager.transform);
+
+            // Instantiation des prefabs de square en fonction des datas
+            for (int i = 0; i < _targetMapManager.MapData.Width; i++)
+            {
+                for (int j = 0; j < _targetMapManager.MapData.Height; j++)
+                {
+                    SquareData data = _targetMapManager.MapData.GetSquareData(i, j);
+                    if(data.State == SquareState.Wall)
+                    {
+                        GameObject newSquare = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._wallView, squaresContainer.transform);
+
+                        newSquare.transform.position = new Vector3(i + 0.5f, 0, j + 0.5f);
+                    }
+                }
+            }
+
+            // ========= Update du NavMesh
         }
     }
 
