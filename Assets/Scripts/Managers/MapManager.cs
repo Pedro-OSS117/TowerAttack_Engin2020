@@ -11,15 +11,18 @@ public class MapManager : MonoBehaviour
 
     public MapData MapData { get { return _mapData; } }
 
+#if UNITY_EDITOR
     // Debug
     public bool displayDebugView = true;
 
     // Debug View
     public GameObject _surfaceView;
     public GameObject _wallView;
+    public GameObject _waterView;
+#endif
 
     [ContextMenu("GenerateMap")]
-    public void GenerateMap()
+    public void ResetMapData()
     {
         _mapData.ResetMap();
 

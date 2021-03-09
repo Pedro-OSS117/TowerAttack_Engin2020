@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 [CustomEditor(typeof(MapManager))]
@@ -14,6 +15,7 @@ public class MapEditor : Editor
 
     private bool _canEditSquare = true;
     private Vector3 _currentEditedPosition = Vector3.zero;
+    private Vector3 _previousEditedPosition = Vector3.zero;
 
     private void OnEnable()
     {
@@ -33,46 +35,21 @@ public class MapEditor : Editor
         DisplayMapViewProperties();
 
         DisplayEditMap();
-        
-        GUILayout.Label("====== UPDATE MAP VIEW ======", EditorStyles.boldLabel);
 
-        if(GUILayout.Button("Update View"))
+        DisplayGenerateMapViewButton();
+    }
+
+    private static Transform GetChildByName(GameObject parent, string name)
+    {
+        for (int i = 0; i < parent.transform.childCount; i++)
         {
-            // ========= Detruire tous les enfants de MapManager
-            DetroyAllChilds(_targetMapManager.gameObject);
-
-            // ========= Instancier et setter la surface             
-            GameObject newSurface = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._surfaceView, _targetMapManager.transform);
-
-            // Scale de la surface pour avoir une correspondance
-            newSurface.transform.localScale = new Vector3(_targetMapManager.MapData.Width, 1, _targetMapManager.MapData.Height);
-
-            // Set de la position de la surface
-            newSurface.transform.position = new Vector3(_targetMapManager.MapData.Width / 2.0f, 0, _targetMapManager.MapData.Height / 2.0f);
-
-            // ========= Instancier et setter les squares
-
-            // Creation d'un container en dessous de map manager
-            GameObject squaresContainer = new GameObject("SquaresContainer");
-            squaresContainer.transform.SetParent(_targetMapManager.transform);
-
-            // Instantiation des prefabs de square en fonction des datas
-            for (int i = 0; i < _targetMapManager.MapData.Width; i++)
+            Transform child = parent.transform.GetChild(i);
+            if(child.gameObject.name == name)
             {
-                for (int j = 0; j < _targetMapManager.MapData.Height; j++)
-                {
-                    SquareData data = _targetMapManager.MapData.GetSquareData(i, j);
-                    if(data.State == SquareState.Wall)
-                    {
-                        GameObject newSquare = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._wallView, squaresContainer.transform);
-
-                        newSquare.transform.position = new Vector3(i + 0.5f, 0, j + 0.5f);
-                    }
-                }
+                return child;
             }
-
-            // ========= Update du NavMesh
         }
+        return null;
     }
 
     private void DetroyAllChilds(GameObject parent)
@@ -104,7 +81,8 @@ public class MapEditor : Editor
 
         if (EditorGUI.EndChangeCheck())
         {
-            _targetMapManager.GenerateMap();
+            _targetMapManager.ResetMapData();
+            GenerateMapView();
             SetObjectDirty(_targetMapManager);
             SceneView.RepaintAll();
         }
@@ -125,12 +103,19 @@ public class MapEditor : Editor
     {
         GUILayout.Label("====== MAP VIEW ======", EditorStyles.boldLabel);
         EditorGUI.BeginChangeCheck();
+
         _targetMapManager._surfaceView = (GameObject)EditorGUILayout.ObjectField("Surface Debug", _targetMapManager._surfaceView, typeof(GameObject), false);
+        
         _targetMapManager._wallView = (GameObject)EditorGUILayout.ObjectField("Wall Debug", _targetMapManager._wallView, typeof(GameObject), false);
+        
         if (EditorGUI.EndChangeCheck())
         {
             SetObjectDirty(_targetMapManager);
         }
+
+        EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(_targetMapManager._waterView)));
+
+        serializedObject.ApplyModifiedProperties();
     }
 
     private void DisplayEditMap()
@@ -139,7 +124,9 @@ public class MapEditor : Editor
 
         if (GUILayout.Button("Reset Map"))
         {
-            _targetMapManager.GenerateMap();
+            _targetMapManager.ResetMapData();
+            GenerateMapView();
+
             SetObjectDirty(_targetMapManager);
             SceneView.RepaintAll();
         }
@@ -157,6 +144,70 @@ public class MapEditor : Editor
             _squareStateMode = EditorGUILayout.Popup(_squareStateMode, values);
             GUILayout.EndHorizontal();
         }
+    }
+
+    private void DisplayGenerateMapViewButton()
+    {
+        GUILayout.Label("====== UPDATE MAP VIEW ======", EditorStyles.boldLabel);
+
+        if (GUILayout.Button("Update View"))
+        {
+            GenerateMapView();
+        }
+    }
+
+    private void GenerateMapView()
+    {
+        // ========= Detruire tous les enfants de MapManager
+        DetroyAllChilds(_targetMapManager.gameObject);
+
+        // ========= Instancier et setter la surface             
+        GameObject newSurface = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._surfaceView, _targetMapManager.transform);
+
+        // Scale de la surface pour avoir une correspondance
+        newSurface.transform.localScale = new Vector3(_targetMapManager.MapData.Width, 1, _targetMapManager.MapData.Height);
+
+        // Set de la position de la surface
+        newSurface.transform.position = new Vector3(_targetMapManager.MapData.Width / 2.0f, 0, _targetMapManager.MapData.Height / 2.0f);
+
+        // ========= Instancier et setter les squares
+
+        // Creation d'un container en dessous de map manager
+        GameObject squaresContainer = new GameObject("SquaresContainer");
+        squaresContainer.transform.SetParent(_targetMapManager.transform);
+
+        // Instantiation des prefabs de square en fonction des datas
+        for (int i = 0; i < _targetMapManager.MapData.Width; i++)
+        {
+            for (int j = 0; j < _targetMapManager.MapData.Height; j++)
+            {
+                SquareData data = _targetMapManager.MapData.GetSquareData(i, j);
+                GameObject newSquare = null;
+                switch (data.State)
+                {
+                    case SquareState.Wall:
+                        newSquare = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._wallView, squaresContainer.transform);
+                        break;
+                    case SquareState.Water:
+                        newSquare = (GameObject)PrefabUtility.InstantiatePrefab(_targetMapManager._waterView, squaresContainer.transform);
+                        break;
+                }
+                if (newSquare != null)
+                {
+                    newSquare.transform.position = new Vector3(i + 0.5f, 0, j + 0.5f);
+                }
+            }
+        }
+
+        // ========= Update du NavMesh
+        NavMeshSurface navMeshSurface = newSurface.GetComponent<NavMeshSurface>();
+
+        //NavMeshSurface navMeshSurface2 = _targetMapManager.GetComponentInChildren<NavMeshSurface>();
+
+        /*Transform navMeshChild = GetChildByName(_targetMapManager.gameObject, "NavMeshSurface");
+        _targetMapManager.transform.GetChild(0).GetComponent<NavMeshSurface>();*/
+
+        navMeshSurface.BuildNavMesh();
     }
 
 
@@ -177,7 +228,7 @@ public class MapEditor : Editor
             {
                 if(_canEditSquare)
                 {
-                    EditSquareStateMode(_currentEditedPosition);
+                    EditSquareStateMode();
                 }
             }
         }
@@ -231,23 +282,28 @@ public class MapEditor : Editor
         return false;
     }
 
-    private void EditSquareStateMode(Vector3 position)
+    private void EditSquareStateMode()
     {
         SquareState currentSquareState = (SquareState)_squareStateMode;
         Handles.color = SquareData.GetColorFromState(currentSquareState);
-        Handles.DrawWireCube(position, Vector3.one);
+        Handles.DrawWireCube(_currentEditedPosition, Vector3.one);
         Handles.color = Color.cyan;
-        Handles.DrawWireCube(position, Vector3.one/2);
-
+        Handles.DrawWireCube(_currentEditedPosition, Vector3.one/2);
+                
         if ((Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag)
             && Event.current.button == 0)
         {
-            //_targetMapManager.MapData.SetSquareState(position, currentSquareState);
-
-            int indexSquare = _targetMapManager.MapData.GetIndexFromPos(position.x, position.z);
+            int indexSquare = _targetMapManager.MapData.GetIndexFromPos(_currentEditedPosition.x, _currentEditedPosition.z);
             _targetMapManager.MapData.Grid[indexSquare].State = currentSquareState;
 
+            //GenerateMapView();
+
             SetObjectDirty(_targetMapManager);
+        }
+
+        if(Event.current.type == EventType.MouseUp && Event.current.button == 0)
+        {
+            GenerateMapView();
         }
     }
 
