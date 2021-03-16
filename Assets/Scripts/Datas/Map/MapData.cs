@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class MapData
 {
+#pragma warning disable 0649
     [SerializeField]
     [Range(1, 50)]
     private int _width;
@@ -14,6 +15,7 @@ public class MapData
 
     [SerializeField]
     private SquareData[] _grid;
+#pragma warning restore 0649
 
     public int Width
     {
