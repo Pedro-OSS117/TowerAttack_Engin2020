@@ -31,6 +31,7 @@ public class EntityData : ScriptableObject
 
     [SerializeField]
     private ActionData[] _actions = null;
+    public ActionData[] Actions { get { return _actions; } }
 
     [SerializeField]
     [Min(0)]
