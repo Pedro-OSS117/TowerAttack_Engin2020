@@ -5,9 +5,11 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class MapManager : MonoBehaviour
 {
+#pragma warning disable 0649
     // Data
     [SerializeField]
     private MapData _mapData;
+#pragma warning restore 0649
 
     public MapData MapData { get { return _mapData; } }
 

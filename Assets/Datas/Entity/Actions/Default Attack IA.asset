@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Attack IA
   m_EditorClassIdentifier: 
   _timeToDoAction: 1
-  _damage: 50
+  _damage: 10
   _rangeDo: 4
   _rangeDetect: 0
   _attackUnit: 1

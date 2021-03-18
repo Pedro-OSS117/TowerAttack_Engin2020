@@ -93,6 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
-  speed: 1
+  speed: 2
   damage: 1
   rangeHit: 0.1

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Default Attack
   m_EditorClassIdentifier: 
   _timeToDoAction: 1
-  _damage: 100
-  _rangeDo: 5
-  _rangeDetect: 0
+  _damage: 10
+  _rangeDo: 4
+  _rangeDetect: 6
   _attackUnit: 1
   _attackFly: 0

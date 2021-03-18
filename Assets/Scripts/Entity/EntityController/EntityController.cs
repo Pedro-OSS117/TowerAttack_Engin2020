@@ -5,22 +5,26 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
+#pragma warning disable 0649
     [SerializeField]
     private EntityData _datas;
+#pragma warning restore 0649
 
     public EntityData Datas { get { return _datas; } }
     
     [SerializeField]
     private int _currentLife = 0;
 
-    private ActionController[] actionControllers;
+    protected ActionController[] actionControllers;
 
+#pragma warning disable 0649
     [SerializeField]
     private Alignment _alignment;
+#pragma warning restore 0649
 
     public Alignment Alignment { get { return _alignment; } }
 
-    public void Awake()
+    public virtual void Awake()
     {
         _currentLife = _datas.Life;
         actionControllers = GetComponents<ActionController>();
@@ -52,7 +56,7 @@ public class EntityController : MonoBehaviour
         }
     }
 
-    public void Update()
+    public virtual void Update()
     {
         if (actionControllers != null)
         {

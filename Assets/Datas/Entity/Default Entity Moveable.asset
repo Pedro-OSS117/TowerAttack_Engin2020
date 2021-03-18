@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613bb25d0c96ffa4f920593a61f6b289, type: 3}
-  m_Name: Default Entity 2
+  m_Script: {fileID: 11500000, guid: 7fcc570ff7b1dc649968e3f1c08fe15e, type: 3}
+  m_Name: Default Entity Moveable
   m_EditorClassIdentifier: 
-  _life: 110
-  _nameEntity: TourTest
-  _type: 1
-  _popAmount: 1
+  _life: 1214
+  _nameEntity: Move Boby
+  _type: 0
+  _popAmount: 0
   _actions:
-  - {fileID: 11400000, guid: 91aa1fb228629d6458d67c9581de951b, type: 2}
+  - {fileID: 11400000, guid: 08456ab88a7918d4c944a818df677dd2, type: 2}
   level: 0
   numberPop: 1
+  _speed: 2.5

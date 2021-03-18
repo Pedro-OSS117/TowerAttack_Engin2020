@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackActionController : ActionController
 {
+#pragma warning disable 0649
     [SerializeField]
     private AttackActionData _attackActionData;
+
+    public AttackActionData AttackActionData { get { return _attackActionData;  } }
+#pragma warning restore 0649
 
     [SerializeField]
     private EntityController _currentTarget;
@@ -33,6 +38,12 @@ public class AttackActionController : ActionController
         {
             _maskLayer |= LayerMask.GetMask("Unit");
         }
+
+        if(originAttack == null)
+        {
+            originAttack = transform;
+            Debug.Log("No Origin Attack", gameObject);
+        }
     }
 
     public override void UpdateAction()
@@ -50,49 +61,7 @@ public class AttackActionController : ActionController
         // Si pas de target on cherche une nouvelle target
         if (_currentTarget == null)
         {
-            RaycastHit[] hits = Physics.CapsuleCastAll(originAttack.position, originAttack.position, _attackActionData.RangeDo, Vector3.up, 0, _maskLayer);
-
-            EntityController newTarget = null;
-
-            foreach(RaycastHit hit in hits)
-            {
-                // Test is pas lui même
-                if (hit.transform == transform)
-                {
-                    continue;
-                }
-
-                EntityController toTestNewTarget = hit.transform.GetComponent<EntityController>();
-
-                // Test si bien une entity
-                if(toTestNewTarget == null)
-                {
-                    continue;
-                }
-                
-                // Test l'alignement
-                if (_currentEntity.Alignment == toTestNewTarget.Alignment)
-                {
-                    continue;
-                }
-
-                // test si pas encore de nouvelle target
-                if(newTarget == null)
-                {
-                    newTarget = toTestNewTarget;
-                    continue;
-                }
-
-                // Test si c'est l'entité la plus proche
-                if(Vector3.Distance(originAttack.position, toTestNewTarget.transform.position) 
-                    < Vector3.Distance(originAttack.position, newTarget.transform.position))
-                {
-                    newTarget = toTestNewTarget;
-                    continue;
-                }
-            }
-
-            _currentTarget = newTarget;
+            _currentTarget = DetectAroundEntity(_attackActionData.RangeDo);
         }
 
 
@@ -105,6 +74,53 @@ public class AttackActionController : ActionController
         {
             ResetAction();
         }
+    }
+
+    private EntityController DetectAroundEntity(float rangeDetect)
+    {
+        RaycastHit[] hits = Physics.CapsuleCastAll(originAttack.position, originAttack.position, rangeDetect, Vector3.up, 0, _maskLayer);
+
+        EntityController newTarget = null;
+
+        foreach (RaycastHit hit in hits)
+        {
+            // Test is pas lui même
+            if (hit.transform == transform)
+            {
+                continue;
+            }
+
+            EntityController toTestNewTarget = hit.transform.GetComponent<EntityController>();
+
+            // Test si bien une entity
+            if (toTestNewTarget == null)
+            {
+                continue;
+            }
+
+            // Test l'alignement
+            if (_currentEntity.Alignment == toTestNewTarget.Alignment)
+            {
+                continue;
+            }
+
+            // test si pas encore de nouvelle target
+            if (newTarget == null)
+            {
+                newTarget = toTestNewTarget;
+                continue;
+            }
+
+            // Test si c'est l'entité la plus proche
+            if (Vector3.Distance(originAttack.position, toTestNewTarget.transform.position)
+                < Vector3.Distance(originAttack.position, newTarget.transform.position))
+            {
+                newTarget = toTestNewTarget;
+                continue;
+            }
+        }
+
+        return newTarget;
     }
 
     protected override void DoAction()
@@ -134,11 +150,28 @@ public class AttackActionController : ActionController
         ResetAction();
     }
 
+    public GameObject DetectNewTarget()
+    {
+        EntityController detected = DetectAroundEntity(_attackActionData.RangeDetect);
+        if(detected)
+        {
+            return detected.gameObject;
+        }
+        return null;
+    }
+
     private void OnDrawGizmos()
     {
         if(_attackActionData != null)
         {
+            Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(originAttack.position, _attackActionData.RangeDo);
+
+            if(_attackActionData.RangeDo < _attackActionData.RangeDetect)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireSphere(originAttack.position, _attackActionData.RangeDetect);
+            }
         }
     }
 }

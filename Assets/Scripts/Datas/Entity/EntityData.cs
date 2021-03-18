@@ -11,6 +11,7 @@ public enum EntityType
 [CreateAssetMenu(fileName = "Default Entity", menuName = "TowerAttack/Entity/New Entity")]
 public class EntityData : ScriptableObject
 {
+    [Header("ENTITY PROPERTIES")]
     [SerializeField]
     [Min(0)]
     private int _life = 0;
