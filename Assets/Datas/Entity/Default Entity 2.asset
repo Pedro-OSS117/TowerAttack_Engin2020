@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4338cfd0ef18283479988c2174de8e5d, type: 3}
-  m_Name: Default Attack
+  m_Script: {fileID: 11500000, guid: 613bb25d0c96ffa4f920593a61f6b289, type: 3}
+  m_Name: Default Entity 2
   m_EditorClassIdentifier: 
-  _timeToDoAction: 1
-  _damage: 100
-  _rangeDo: 5
-  _rangeDetect: 0
-  _attackUnit: 1
-  _attackFly: 0
+  _life: 500
+  _nameEntity: TourTest
+  _type: 1
+  _popAmount: 1
+  _actions:
+  - {fileID: 11400000, guid: 91aa1fb228629d6458d67c9581de951b, type: 2}
+  level: 0
+  numberPop: 1

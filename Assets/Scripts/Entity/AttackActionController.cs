@@ -12,6 +12,8 @@ public class AttackActionController : ActionController
 
     private int _maskLayer = 0;
 
+    private EntityController _currentEntity;
+
     public GameObject prefabAttack;
     public Transform originAttack;
 
@@ -23,6 +25,8 @@ public class AttackActionController : ActionController
     public override void Awake()
     {
         base.Awake();
+
+        _currentEntity = GetComponent<EntityController>();
 
         _maskLayer = LayerMask.GetMask("Building");
         if (_attackActionData.AttackUnit)
@@ -65,8 +69,12 @@ public class AttackActionController : ActionController
                 {
                     continue;
                 }
-
+                
                 // Test l'alignement
+                if (_currentEntity.Alignment == toTestNewTarget.Alignment)
+                {
+                    continue;
+                }
 
                 // test si pas encore de nouvelle target
                 if(newTarget == null)

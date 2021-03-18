@@ -15,6 +15,11 @@ public class EntityController : MonoBehaviour
 
     private ActionController[] actionControllers;
 
+    [SerializeField]
+    private Alignment _alignment;
+
+    public Alignment Alignment { get { return _alignment; } }
+
     public void Awake()
     {
         _currentLife = _datas.Life;
