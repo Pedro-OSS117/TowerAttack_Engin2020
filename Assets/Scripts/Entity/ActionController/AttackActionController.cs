@@ -160,7 +160,8 @@ public class AttackActionController : ActionController
         return null;
     }
 
-    private void OnDrawGizmos()
+
+    private void OnDrawGizmosSelected()
     {
         if(_attackActionData != null)
         {
