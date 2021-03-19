@@ -1,0 +1,73 @@
+================== Règles =====================
+. Doit être sur vos Unity GitHub avant 10h Mardi 23 Mars sinon 0.
+. -1 points à chaque erreur de nomenclature.
+. -5 si pas de commentaires et -2 si les commentaires ne sont pas exaustifs
+. 0 sur l'exo si le programme ne compile pas.
+. note exo divisée par 2 si l'exo plante à l'éxécution.
+
+
+================== ENTITY ==================
+
+================== I Donnée InvocationActionData
+1 - Creer une nouvelle classe qui dérive de ActionData
+
+2 - Ajouter les propriétés suivantes : 
+- temps avant prochaine invocation, 
+- l'EntityData qui sera créée,
+- le nombre d'entité qu'il faut créer lors de l'invocation.
+
+3 - Creer une instance de cette classe, celle ci servira dans la partie III.
+
+================== II Composant InvocationActionConroller
+1 - Creer une classe qui dérive de ActionController.
+
+2 - Ajouter une propriétés de type InvocationActionData.
+
+3 - Faire en sorte que lorsque l'action s'execute (DoAction) :
+- il y est instantiation des entités référéncées par les données de l'action. Utiliser l'EntityManager.
+- le nombre d'instantiation soit celui des données de l'action.
+
+4 - Ajouter une liste de Transform nommée spawnPoints.
+
+5 - Faire en sorte que les unités invoquées soient placées de manière random à la position des spawnPoints.
+
+================== III Tower
+1 - Creer une nouvelle EntityData nommée Tower. Setter les valeures des propriétés de façon cohérentes.
+
+2 - Creer et Ajouter une action de type attaque à la Tower.
+
+3 - Creer et Ajouter une action de type invocation à la Tower qui créera toutes les x secondes y Monster (Vous pouvez créer une entité particulière).
+
+4 - Creer une nouvelle prefab nommée Tower. 
+Setter la prefab pour qu'elle execute en utilisant les datas créer précédemment.
+Utiliser les composants AttackActionController et InvocationActionConroller pour cela.
+
+5 - Instantier cette prefab dans la scene pour pouvoir la tester.
+
+
+================== ALIGNMENT ==================
+
+================== IV - Set de l'Alignement des squares de la map (MapManager)
+1 - Faire une méthode qui prend en paramètres un Alignement et une position.
+Cette méthode doit permettre de changer l'Alignement du square de la map à cette position.
+Il est possible de faire cette méthode avec un index (index du square à changer) en paramètres.
+
+2 - Faire une méthode qui prend en paramètres un Alignement, une position, une width et une height.
+Cette méthode doit permettre de setter l'Alignement des squares de la map sur une zone (rectangulaire) 
+plutôt qu'un seul square à la fois.
+Cette methode peut être faite avec 2 index en paramètres : 
+celui du square en bas à gauche du rectangle et celui du square en haut à droite du rectangle.
+Attention les valeurs doivent être testées pour être valides par rapport à la gird.
+
+3 - A partir de cette méthode, faire en sorte que l'Alignement map soit setter de la manière suivante au lancement du jeu :
+la moitié du bas de la map en Alignement Player et l'autre moitié en IA.
+
+================== V - Créer la vue de la drop zone (MapManager)
+1 - Créer une vue de l'Alignement de la grid 
+conseil : 
+- afficher un Quad pour chaque square avec un material transparent)
+- mettre tous les quads créer dans un container qui lui même est dans le GameObject du MapManager.
+- faire une couleur pour chaque Alignement.
+
+2 - Faire en sorte que cette vue s'affiche dès le lancement du jeu.
+3 - Faire en sorte que cette vue se mette à jour si l'Alignement d'un square est changé.
