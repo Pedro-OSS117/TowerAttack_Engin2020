@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 1214
   _nameEntity: Move Boby
+  _namePrefab: Default Entity Moveable
   _type: 0
   _popAmount: 0
   _actions:

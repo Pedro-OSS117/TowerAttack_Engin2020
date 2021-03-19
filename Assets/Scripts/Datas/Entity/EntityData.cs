@@ -22,6 +22,10 @@ public class EntityData : ScriptableObject
     public string Name { get { return _nameEntity; } }
 
     [SerializeField]
+    private string _namePrefab = "Default Entity";
+    public string NamePrefab { get { return _namePrefab; } }
+
+    [SerializeField]
     private EntityType _type = EntityType.Unit;
     public EntityType Type { get { return _type; } }
 
