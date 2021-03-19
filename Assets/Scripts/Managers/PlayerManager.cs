@@ -24,13 +24,17 @@ public class PlayerManager : MonoBehaviour
         {
             Vector3 mousePosition = Input.mousePosition;
 
-            Vector3 originRay = currentCamera.ScreenToWorldPoint(mousePosition);
+            //Vector3 originRay = currentCamera.ScreenToWorldPoint(mousePosition);
 
+            Ray ray = currentCamera.ScreenPointToRay(mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(originRay, currentCamera.transform.forward, out hit, 100, LayerMask.GetMask("Ground")))
+            //if (Physics.Raycast(originRay, currentCamera.transform.forward, out hit, 100, LayerMask.GetMask("Ground")))
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
             {
-                Debug.DrawRay(originRay, currentCamera.transform.forward * 100, Color.green);
+                //Debug.DrawRay(originRay, currentCamera.transform.forward * 100, Color.green);
+
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
 
                 if (entityData)
                 {
