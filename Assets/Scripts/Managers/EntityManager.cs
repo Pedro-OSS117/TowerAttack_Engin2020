@@ -14,7 +14,6 @@ public class EntityManager : Singleton<EntityManager>
 
     public void CreateEntity(Vector3 point, EntityData entityToCreate)
     {
-        Debug.Log("Create Entity");
         GameObject prefabEntity = GetPrefabFromEntityDataBy(entityToCreate);
         if (prefabEntity)
         {

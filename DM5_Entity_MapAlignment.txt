@@ -21,11 +21,11 @@
 ================== II Composant InvocationActionConroller
 1 - Creer une classe qui dérive de ActionController.
 
-2 - Ajouter une propriétés de type InvocationActionData.
+2 - Ajouter une propriété de type InvocationActionData.
 
 3 - Faire en sorte que lorsque l'action s'execute (DoAction) :
-- il y est instantiation des entités référéncées par les données de l'action. Utiliser l'EntityManager.
-- le nombre d'instantiation soit celui des données de l'action.
+- qu'il y ai instantiation des entités référéncées par les données de l'action. Utiliser l'EntityManager.
+- que le nombre d'instantiation soit celui des données de l'action.
 
 4 - Ajouter une liste de Transform nommée spawnPoints.
 

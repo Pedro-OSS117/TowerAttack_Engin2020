@@ -158,6 +158,7 @@ public class MapEditor : Editor
         }
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(_targetMapManager._waterView)));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(_targetMapManager.squareFBDropZonePrefab)));
 
         serializedObject.ApplyModifiedProperties();
     }

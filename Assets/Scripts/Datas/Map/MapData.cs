@@ -59,13 +59,18 @@ public class MapData
 
     public int GetIndexFromPos(float x, float z)
     {
-        return ((int)z) * Width + (int)x;
+        if(IsInGrid(x, z))
+        {
+            return ((int)z) * Width + (int)x;
+        }
+        Debug.LogWarning("Not In Grid " + x + " : " + z);
+        return -1;
     }
 
     public SquareData GetSquareData(float x, float z)
     {
         int index = GetIndexFromPos(x, z);
-        if(index < _grid.Length)
+        if(index != -1 && index < _grid.Length)
         {
             return _grid[index];
         }
@@ -98,6 +103,30 @@ public class MapData
         }
     }
 
+    public bool IsNotState(int index, params SquareState[] states)
+    {
+        foreach (SquareState state in states)
+        {
+            if (_grid[index].State == state)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public bool IsOneOfState(int index, params SquareState[] states)
+    {
+        foreach (SquareState state in states)
+        {
+            if (_grid[index].State == state)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// Return index if position is in Grid.
     /// Return -1 instead.
@@ -117,7 +146,12 @@ public class MapData
 
     public bool IsInGrid(Vector3 position)
     {
-        return position.x >= 0 && position.x <= _width && position.z >= 0 && position.z <= _height;
+        return IsInGrid(position.x, position.z);
+    }
+
+    public bool IsInGrid(float x, float z)
+    {
+        return x >= 0 && x < _width && z >= 0 && z < _height;
     }
 
     // Modifie les datas de l'edge a la position : position
@@ -209,5 +243,15 @@ public class MapData
                 //debugLockRemoved.Add(newPosSquare);
             }
         }
+    }
+
+    public bool IsAlignment(int index, Alignment alignment)
+    {
+        return _grid[index].Alignment == alignment;
+    }
+
+    public void SetAlignment(int index, Alignment alignment)
+    {
+        _grid[index].Alignment = alignment;
     }
 }
