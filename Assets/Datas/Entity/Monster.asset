@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fcc570ff7b1dc649968e3f1c08fe15e, type: 3}
   m_Name: Monster
   m_EditorClassIdentifier: 
-  _life: 100
+  _life: 10
   _nameEntity: Move Boby
   _namePrefab: Monster
   _type: 0

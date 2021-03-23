@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
+    [Header("Entity Properties")]
 #pragma warning disable 0649
     [SerializeField]
     private EntityData _datas;
@@ -73,7 +74,7 @@ public class EntityController : MonoBehaviour
 
         if(_currentLife <= 0)
         {
-            Destroy(gameObject);
+            EntityManager.Instance.DestroyEntity(gameObject);
         }
     }
 

@@ -11,6 +11,7 @@ public class EntityMoveableController : EntityController
 
     private NavMeshAgent _navMeshAgent;
 
+    [Header("Move Properties")]
     public GameObject globalTarget;
 
     [SerializeField]

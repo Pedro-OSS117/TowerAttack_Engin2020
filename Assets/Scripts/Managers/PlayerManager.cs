@@ -10,37 +10,56 @@ public class PlayerManager : MonoBehaviour
 
     public EntityData entityData;
 
+    public GameObject placement3DUI;
+
+    private MapManager _mapManager;
+
     // Start is called before the first frame update
     void Start()
     {
         //_entityManager = Singleton<EntityManager>.Instance;
         _entityManager = EntityManager.Instance;
+
+        _mapManager = FindObjectOfType<MapManager>();
+        if (!_mapManager)
+        {
+            Debug.LogError("NO MAP MANAGER");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        Vector3 mousePosition = Input.mousePosition;
+
+        Ray ray = currentCamera.ScreenPointToRay(mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
         {
-            Vector3 mousePosition = Input.mousePosition;
+            Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
 
-            //Vector3 originRay = currentCamera.ScreenToWorldPoint(mousePosition);
+            // Vue de la possibilité de placement
+            placement3DUI.SetActive(true);
+            placement3DUI.transform.position = hit.point;
 
-            Ray ray = currentCamera.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
+            bool isMouseInPlayerZone = _mapManager.TestIsAlignement(hit.point, Alignment.Player);
 
-            //if (Physics.Raycast(originRay, currentCamera.transform.forward, out hit, 100, LayerMask.GetMask("Ground")))
-            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+            Renderer render = placement3DUI.GetComponentInChildren<Renderer>();
+            render.material.color = _mapManager.GetColorFromAlignement(isMouseInPlayerZone ? Alignment.Player : Alignment.IA);
+
+            // Creation d'entité
+            if (Input.GetMouseButtonDown(0) && entityData)
             {
-                //Debug.DrawRay(originRay, currentCamera.transform.forward * 100, Color.green);
-
-                Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
-
-                if (entityData)
+                if (isMouseInPlayerZone)
                 {
                     _entityManager.CreateEntity(hit.point, entityData);
                 }
             }
+        }
+        else
+        {
+            placement3DUI.SetActive(false);
         }
     }
 }

@@ -41,12 +41,28 @@ public class MapManager : MonoBehaviour
 
         SetAlignementZone(Alignment.Player, Vector3.zero, _mapData.Width, _mapData.Height / 2);
 
-        Vector3 origin = new Vector3(0, 0, _mapData.Height / 2);
-        if(_mapData.Height % 2 != 0)
-        {
-            origin.z += 1;
-        }
+        Vector3 origin = new Vector3(0, 0, GetHalfHeightMap());
         SetAlignementZone(Alignment.IA, origin, _mapData.Width, _mapData.Height / 2);
+    }
+
+    public int GetHalfHeightMap()
+    {
+        int halfHeight = _mapData.Height / 2;
+        if (_mapData.Height % 2 != 0)
+        {
+            halfHeight += 1;
+        }
+        return halfHeight;
+    }
+
+    public int GetHalfWidthtMap()
+    {
+        int halfWidth = _mapData.Width / 2;
+        if (_mapData.Width % 2 != 0)
+        {
+            halfWidth += 1;
+        }
+        return halfWidth;
     }
 
     #region ALIGNMENT

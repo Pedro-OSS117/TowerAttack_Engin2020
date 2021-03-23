@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b51fbe8af744f943b132a0cbc2bb525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _datas: {fileID: 11400000, guid: 72787b59944533242996f48bbb5d1cf9, type: 2}
+  _datas: {fileID: 11400000, guid: 5f2fc3e318dcbe2448f2a480fba2f854, type: 2}
   _currentLife: 0
   _alignment: 1
 --- !u!114 &302120559177139037
