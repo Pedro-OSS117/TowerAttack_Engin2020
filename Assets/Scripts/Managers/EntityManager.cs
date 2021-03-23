@@ -35,18 +35,21 @@ public class EntityManager : Singleton<EntityManager>
         GameObject prefabEntity = GetPrefabFromEntityDataBy(entityToCreate);
         if (prefabEntity)
         {
-            GameObject newEntity = Instantiate(prefabEntity, point, Quaternion.identity, transform);
-            EntityController entityController = newEntity.GetComponent<EntityController>();
-            if(entityController is EntityMoveableController)
+            for (int i = 0; i < entityToCreate.NumberPop; i++)
             {
-                EntityMoveableController moveable = (EntityMoveableController)entityController;
-                if(moveable.Alignment == Alignment.IA)
+                GameObject newEntity = Instantiate(prefabEntity, point, Quaternion.identity, transform);
+                EntityController entityController = newEntity.GetComponent<EntityController>();
+                if (entityController is EntityMoveableController)
                 {
-                    moveable.globalTarget = globalTargetPlayer;
-                }
-                else
-                {
-                    moveable.globalTarget = globalTargetIA;
+                    EntityMoveableController moveable = (EntityMoveableController)entityController;
+                    if (moveable.Alignment == Alignment.IA)
+                    {
+                        moveable.globalTarget = globalTargetPlayer;
+                    }
+                    else
+                    {
+                        moveable.globalTarget = globalTargetIA;
+                    }
                 }
             }
 

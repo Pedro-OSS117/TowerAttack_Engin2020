@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4338cfd0ef18283479988c2174de8e5d, type: 3}
+  m_Name: BigSoldierAttack
+  m_EditorClassIdentifier: 
+  _timeToDoAction: 3
+  _damage: 25
+  _rangeDo: 4
+  _rangeDetect: 6
+  _attackUnit: 1
+  _attackFly: 0

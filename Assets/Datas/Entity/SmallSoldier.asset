@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fcc570ff7b1dc649968e3f1c08fe15e, type: 3}
-  m_Name: Monster
+  m_Name: SmallSoldier
   m_EditorClassIdentifier: 
   _life: 50
   _nameEntity: Move Boby
-  _namePrefab: Monster
+  _namePrefab: SmallSoldier
   _type: 0
-  _popAmount: 0
+  _popAmount: 3
   _actions:
-  - {fileID: 11400000, guid: 9a0965c87cca51d41841121a609bc212, type: 2}
+  - {fileID: 11400000, guid: a59c30333b297824e8d582efe69b5fd1, type: 2}
   level: 0
-  numberPop: 1
-  _speed: 2
+  numberPop: 3
+  _speed: 4

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentTimeBeforeNextDo: 0
-  _attackActionData: {fileID: 11400000, guid: 08456ab88a7918d4c944a818df677dd2, type: 2}
+  _attackActionData: {fileID: 11400000, guid: 9a0965c87cca51d41841121a609bc212, type: 2}
   _currentTarget: {fileID: 0}
   prefabAttack: {fileID: 7258103695705768876, guid: 874f6c1d26ea70e43927265c60816ae0,
     type: 3}

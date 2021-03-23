@@ -8,11 +8,14 @@ public class PlayerManager : MonoBehaviour
 
     private EntityManager _entityManager;
 
-    public EntityData entityData;
-
     public GameObject placement3DUI;
 
     private MapManager _mapManager;
+
+    public Deck deck;
+
+    [SerializeField]
+    private int _currentIndexDeck = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -25,41 +28,58 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.LogError("NO MAP MANAGER");
         }
+
+        UpdateDropZoneView();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = Input.mousePosition;
-
-        Ray ray = currentCamera.ScreenPointToRay(mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+        if(Input.GetKeyDown(KeyCode.Tab))
         {
-            Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
-
-            // Vue de la possibilité de placement
-            placement3DUI.SetActive(true);
-            placement3DUI.transform.position = hit.point;
-
-            bool isMouseInPlayerZone = _mapManager.TestIsAlignement(hit.point, Alignment.Player);
-
-            Renderer render = placement3DUI.GetComponentInChildren<Renderer>();
-            render.material.color = _mapManager.GetColorFromAlignement(isMouseInPlayerZone ? Alignment.Player : Alignment.IA);
-
-            // Creation d'entité
-            if (Input.GetMouseButtonDown(0) && entityData)
+            _currentIndexDeck++;
+            if(_currentIndexDeck >= deck.Entities.Count)
             {
-                if (isMouseInPlayerZone)
+                _currentIndexDeck = -1;
+            }
+            UpdateDropZoneView();
+        }
+
+        if(_currentIndexDeck != -1)
+        {
+            Vector3 mousePosition = Input.mousePosition;
+
+            Ray ray = currentCamera.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100, LayerMask.GetMask("Ground")))
+            {
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+
+                // Vue de la possibilité de placement
+                placement3DUI.transform.position = hit.point;
+
+                bool isMouseInPlayerZone = _mapManager.TestIsAlignement(hit.point, Alignment.Player);
+
+                Renderer render = placement3DUI.GetComponentInChildren<Renderer>();
+                render.material.color = _mapManager.GetColorFromAlignement(isMouseInPlayerZone ? Alignment.Player : Alignment.IA);
+
+                // Creation d'entité
+                if (Input.GetMouseButtonDown(0))
                 {
-                    _entityManager.CreateEntity(hit.point, entityData);
+                    if (isMouseInPlayerZone)
+                    {
+                        _entityManager.CreateEntity(hit.point, deck.Entities[_currentIndexDeck]);
+                    }
                 }
             }
         }
-        else
-        {
-            placement3DUI.SetActive(false);
-        }
+    }
+
+    private void UpdateDropZoneView()
+    {
+        bool isDisplayed = _currentIndexDeck != -1;
+        _mapManager.DisplayDropFeedBack(isDisplayed);
+        placement3DUI.SetActive(isDisplayed);
     }
 }
