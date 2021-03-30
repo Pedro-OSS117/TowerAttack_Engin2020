@@ -21,6 +21,8 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         //_entityManager = Singleton<EntityManager>.Instance;
+
+        currentCamera = FindObjectOfType<Camera>();
         _entityManager = EntityManager.Instance;
 
         _mapManager = FindObjectOfType<MapManager>();
