@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour
     private float _currentStamina = 0;
     private float _maxStamina = 10;
 
+    private bool _isMouseInPlayerZone = false;
+    private Vector3 _positionToDrop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +42,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         _playerUIManager = GetComponentInChildren<PlayerUIManager>();
-        _playerUIManager.InitializePopButtons(deck);
+        _playerUIManager.InitializePopButtons(deck, OnPopButtonDown, OnPopButtonUp);
 
         UpdateDropZoneView();
     }
@@ -47,19 +50,11 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            _currentIndexDeck++;
-            if(_currentIndexDeck >= deck.Entities.Count)
-            {
-                _currentIndexDeck = -1;
-            }
-            UpdateDropZoneView();
-        }
-
         UpdateStamina();
 
         UpdateInputPlayer();
+
+        UpdateButtonState();
     }
 
     private void UpdateStamina()
@@ -99,20 +94,49 @@ public class PlayerManager : MonoBehaviour
                 // Vue de la possibilité de placement
                 placement3DUI.transform.position = hit.point;
 
-                bool isMouseInPlayerZone = _mapManager.TestIsAlignement(hit.point, Alignment.Player);
+                _isMouseInPlayerZone = _mapManager.TestIsAlignement(hit.point, Alignment.Player);
 
                 Renderer render = placement3DUI.GetComponentInChildren<Renderer>();
-                render.material.color = _mapManager.GetColorFromAlignement(isMouseInPlayerZone ? Alignment.Player : Alignment.IA);
+                render.material.color = _mapManager.GetColorFromAlignement(_isMouseInPlayerZone ? Alignment.Player : Alignment.IA);
 
-                // Creation d'entité
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (isMouseInPlayerZone)
-                    {
-                        _entityManager.CreateEntity(hit.point, deck.Entities[_currentIndexDeck]);
-                    }
-                }
+                _positionToDrop = hit.point;
             }
         }
+    }
+
+    private void DropEntity()
+    {
+        if (_isMouseInPlayerZone && _currentIndexDeck != -1)
+        {
+            _entityManager.CreateEntity(_positionToDrop, deck.Entities[_currentIndexDeck]);
+        }
+    }
+
+    public void OnPopButtonDown(int index)
+    {
+        Debug.Log("OnPopButtonDown : " + index);
+
+        _currentIndexDeck = index;
+        UpdateDropZoneView();
+
+    }
+
+    public void OnPopButtonUp(int index)
+    {
+        Debug.Log("OnPopButtonUp : " + index);
+
+        DropEntity();
+
+        _currentStamina -= deck.Entities[index].PopAmount;
+
+        UpdateButtonState();
+
+        _currentIndexDeck = -1;
+        UpdateDropZoneView();
+    }
+
+    private void UpdateButtonState()
+    {
+        _playerUIManager.UpdateStatePopButton(_currentStamina, deck);
     }
 }

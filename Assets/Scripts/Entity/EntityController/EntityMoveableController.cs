@@ -75,6 +75,11 @@ public class EntityMoveableController : EntityController
                 maxDistance = attackActionController.AttackActionData.RangeDo;
             }
         }
+
+        if(maxDistance == -1)
+        {
+            maxDistance = 1;
+        }
         return maxDistance;
     }
 

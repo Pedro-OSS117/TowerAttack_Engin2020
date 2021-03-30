@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25cb4c91f58d994ca58bfa146a76a8c, type: 3}
   m_Name: InvocationMonster
   m_EditorClassIdentifier: 
-  _timeToDoAction: 2
+  _timeToDoAction: 5
   _entityToInvoc: {fileID: 11400000, guid: f2f56d2f0aba0f0489921471083281bd, type: 2}
   _numberToInvoc: 3
