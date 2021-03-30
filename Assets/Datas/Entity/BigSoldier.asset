@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BigSoldier
   m_EditorClassIdentifier: 
   _life: 200
-  _nameEntity: Move Boby
+  _nameEntity: Biggy
   _namePrefab: BigSoldier
   _type: 0
   _popAmount: 4

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class PlayerManager : MonoBehaviour
 {
     public Camera currentCamera;
@@ -12,10 +13,16 @@ public class PlayerManager : MonoBehaviour
 
     private MapManager _mapManager;
 
+    private PlayerUIManager _playerUIManager;
+
     public Deck deck;
 
     [SerializeField]
     private int _currentIndexDeck = -1;
+
+    [SerializeField]
+    private float _currentStamina = 0;
+    private float _maxStamina = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +37,9 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.LogError("NO MAP MANAGER");
         }
+
+        _playerUIManager = GetComponentInChildren<PlayerUIManager>();
+        _playerUIManager.InitializePopButtons(deck);
 
         UpdateDropZoneView();
     }
@@ -47,7 +57,35 @@ public class PlayerManager : MonoBehaviour
             UpdateDropZoneView();
         }
 
-        if(_currentIndexDeck != -1)
+        UpdateStamina();
+
+        UpdateInputPlayer();
+    }
+
+    private void UpdateStamina()
+    {
+        if(_currentStamina < _maxStamina)
+        {
+            _currentStamina += Time.deltaTime;
+        }
+        else
+        {
+            _currentStamina = _maxStamina;
+        }
+
+        _playerUIManager.UpdateStaminaLabel(Mathf.FloorToInt(_currentStamina));
+    }
+
+    private void UpdateDropZoneView()
+    {
+        bool isDisplayed = _currentIndexDeck != -1;
+        _mapManager.DisplayDropFeedBack(isDisplayed);
+        placement3DUI.SetActive(isDisplayed);
+    }
+
+    private void UpdateInputPlayer()
+    {
+        if (_currentIndexDeck != -1)
         {
             Vector3 mousePosition = Input.mousePosition;
 
@@ -76,12 +114,5 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void UpdateDropZoneView()
-    {
-        bool isDisplayed = _currentIndexDeck != -1;
-        _mapManager.DisplayDropFeedBack(isDisplayed);
-        placement3DUI.SetActive(isDisplayed);
     }
 }

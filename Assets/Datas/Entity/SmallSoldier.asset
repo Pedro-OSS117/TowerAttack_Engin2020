@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallSoldier
   m_EditorClassIdentifier: 
   _life: 50
-  _nameEntity: Move Boby
+  _nameEntity: Smally
   _namePrefab: SmallSoldier
   _type: 0
   _popAmount: 3
